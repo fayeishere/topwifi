@@ -16,10 +16,10 @@ a{
     margin: 0 auto;
     color: #fff;
     height: 75%;
-    width: 75%;
+    width: 83%;
     text-align: center;
 /*    max-height: 600px;*/
-    border: 20px solid #04fcdc;
+    border: 25px solid #04fcdc;
 }
 .header-container{
     font-family: 'PT Sans', sans-serif;
@@ -41,8 +41,11 @@ h3{
 }
 .column, .player{
     float: left;
-    width: 29%;
-    padding: 2%;
+    width: 30%;
+    padding: 2% 1.2%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .column{
     color: #fcfc04;
