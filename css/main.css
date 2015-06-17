@@ -48,7 +48,7 @@ h3{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.player:hover{
+.player a:hover{
 /*    color: #fcfc04;*/
     font-size: 20px;
 }
