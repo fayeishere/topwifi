@@ -31,7 +31,7 @@
                     <div class="column">Name</div>
                 </div>
                 <div id="content">
-                    <div id="first">
+ <!--                    <div id="first">
                         <div class="player">more</div>
                         <div class="player">more</div>
                         <div class="player">more</div>
@@ -81,7 +81,7 @@
                         <div class="player">more</div>
                         <div class="player">more</div>
                     </div>
-                </div>   
+                </div>    -->
 
             </div> <!-- #main -->
         </div> <!-- #main-container -->
@@ -113,10 +113,12 @@
                     var placesUp = places;
                     placesDown.sort(function(a, b){return b.download-a.download});
                     // placesUp.sort(function(a, b){return b.upload-a.upload});
+                    var rank = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eight", "Ninth", "Tenth"];
                     for (i = 0; i < places.length; i++) { 
                         if(placesDown[i].download > 5){
-                            // $( "#content" ).append( '<a href="https://workfrom.co/' + placesDown[i].slug + '"></br><h2>' + placesDown[i].title + '</h2></a><p>Download speed: ' + placesDown[i].download + '</p></br>' );
-                            $( "#content" ).append( '<a href="https://workfrom.co/' + placesDown[i].slug + '"></br><h2>' + placesDown[i].title + '</h2></a><p>Download speed: ' + placesDown[i].download + '</p></br>' );
+                            var rankLow = rank[i].toLowerCase();
+
+                            $( "#content" ).append( '<div id=' + rankLow + '><div class="player">' + rank[i] + '</div><div class="player">' + placesDown[i].download + '</div><div class="player"><a href="https://workfrom.co/' + placesDown[i].slug + '">' + placesDown[i].title + '</a></div></div>' );
                         }
                         // if(placesDown[i].download > 5){
                         //     $( "#content" ).append( '<a href="https://workfrom.co/' + placesDown[i].slug + '"><img src=' + placesDown[i].thumbnail_img + '></br><h2>' + placesDown[i].title + '</h2></a><p>Download speed: ' + placesDown[i].download + '</p><p>Upload speed: ' + placesDown[i].upload + '</p></br>' );   
@@ -138,7 +140,7 @@
      
                 }
             }
-            // getCity('portland');
+            getCity('portland');
 
         </script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
