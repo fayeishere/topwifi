@@ -49,7 +49,8 @@ h3{
     text-overflow: ellipsis;
 }
 .player:hover{
-    color: #fcfc04;
+/*    color: #fcfc04;*/
+    font-size: 20px;
 }
 .column{
     color: #fcfc04;
