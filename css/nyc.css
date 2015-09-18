@@ -1,0 +1,104 @@
+html, body{
+    height: 100%;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.main{
+    font-family: 'Press Start 2P', cursive;
+    background-color: #000;
+    margin: 0 auto;
+    color: #fff;
+    height: 75%;
+    width: 83%;
+    text-align: center;
+/*    max-height: 600px;*/
+    border: 25px solid #04fcdc;
+}
+.header-container{
+    font-family: 'PT Sans', sans-serif;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+}
+.header-container img{
+    width: 25%;
+}
+.title{
+    margin-bottom: 2%;
+}
+.header-container h2{
+    margin-top: 0;
+    margin-bottom: 2%;
+}
+h3{
+    color: #04fcdc;
+}
+.column, .player{
+    float: left;
+    width: 30%;
+    padding: 2% 1.2%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.player a:hover{
+/*    color: #fcfc04;*/
+    font-size: 20px;
+}
+.column{
+    color: #fcfc04;
+}
+#first{
+    color: #dcdcdc;
+}
+#second{
+    color: #fc0404;
+}
+#third{
+    color: #fcb444;
+}
+#fourth{
+    color: #fcb494;
+}
+#fifth{
+    color: #f4cc34;
+}
+#sixth{
+    color: #fcfc04;
+}
+#seventh{
+    color: #14b42c;
+}
+#eighth{
+    color: #04fcdc;
+}
+#ninth{
+    color: #149cb4;
+}
+#tenth{
+    color: #0cd424;
+}
+@media (max-width : 480px) {
+    .main{
+        font-size: .5em;
+    }
+}
+/*colors*/
+/*dcdcdc
+fc0404
+fcb444
+fcb494
+f4cc34
+fcfc04
+14b42c
+04fcdc
+149cb4
+0cd424*/
+

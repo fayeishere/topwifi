@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Top Wifi Spaces</title>
+        <meta name="description" content="The top wifi speeds in coffee shops, cafes, and coworking spaces in Portland.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/random.css">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                <h3>Random</h3>
+                <div id="content">
+                </div>   
+
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+<!--         <div class="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">Top Wifi Spaces in Portland</h1>
+                <h2 id="powered"> sourced from <a href="https://workfrom.co"></h2>
+                <img src="/img/WorkfromLogo.png"></a>
+                <p id="sub">Fastest wifi download speeds from work spaces including cafes, coffee shops, libraries, and co-working offices.</p>
+            </header>
+        </div> -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+
+            function getCity(city){
+                var url = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
+                $.getJSON( url, function( data ) {
+                  parseJson(data);
+                });
+                // Be cool to allow user to toggle upload/download
+                function parseJson(data){
+                    var places = data.response;
+                    var placesDown = places;
+                    var placesUp = places;
+                    console.log(places);
+                    var random = Math.floor(Math.random() * (places.length - 0) + 0);
+                    console.log(random);
+
+                    $( "#content" ).append( '<div><a href="https://workfrom.co/' + places[random].slug + '"><img src="' + places[random].full_img + '"></a></div><div><a href="https://workfrom.co/' + places[random].slug + '">' + places[random].title + '</a></div></div>' );
+                    // for (i = 0; i < restrict; i++) {
+                    //         var rankLow = rank[i].toLowerCase();
+                    //     if(placesDown[i].download > 5){
+                    //         $( "#content" ).append( '<div id=' + rankLow + '><div class="player">' + rank[i] + '</div><div class="player">' + placesDown[i].download + '</div><div class="player"><a href="https://workfrom.co/' + placesDown[i].slug + '">' + placesDown[i].title + '</a></div></div>' );
+                    //     }
+
+                    // }
+
+     
+                }
+            }
+            getCity('portland');
+
+        </script>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-64258300-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

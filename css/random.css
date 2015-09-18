@@ -1,0 +1,16 @@
+html, body{
+    height: 100%;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+img{
+	width: 50%;
+}
