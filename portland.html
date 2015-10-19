@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -39,7 +38,7 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">Top Wifi Spaces Near You</h1>
+                <h1 class="title">Top Wifi Spaces in Portland</h1>
                 <h2 id="powered"> sourced from <a href="https://workfrom.co"></h2>
                 <img src="/img/WorkfromLogo.png"></a>
                 <p id="sub">Fastest wifi download speeds from work spaces including cafes, coffee shops, libraries, and co-working offices.</p>
@@ -51,86 +50,47 @@
         <script src="js/main.js"></script>
         <script type="text/javascript">
 
-        getLocation();
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
-            }
-            function showPosition(position) {
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
-                // testLat = 35.1992;
-                // testLong = -111.6311;
-
-
-                getCity(latitude, longitude);
-            }
-
-            function getCity(latitude, longitude){
-
-                var url = "http://api.workfrom.co/places/ll/" + latitude + "," + longitude + "?appid=fayerocks";
+            function getCity(city){
+                var url = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
                 $.getJSON( url, function( data ) {
-                    parseJson(data);
-
+                  parseJson(data);
                 });
                 // Be cool to allow user to toggle upload/download
                 function parseJson(data){
                     var places = data.response;
-                    if(places.length == 0){
-                        var geocoder = new google.maps.Geocoder;
-
-                        var latlng = {lat: latitude, lng: longitude};
-                          geocoder.geocode({'location': latlng}, function(results, status) {
-                            if (status === google.maps.GeocoderStatus.OK) {
-                              if (results[3]) {
-                                // console.log(results[3].address_components[1].long_name);
-                                var city = results[3].address_components[1].long_name;
-                                var cityUrl = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
-                                $.getJSON( cityUrl, function( data ) {
-                                    cityPlaces = data.response;
-                                    if(cityPlaces.length == 0){
-                                        window.alert('No results found');
-                                    }
-                                    else{
-                                        reorder(cityPlaces);
-                                    }
-                                });
-                              } else {
-                                window.alert('No results found');
-                              }
-                            } else {
-                              window.alert('Geocoder failed due to: ' + status);
-                            }
-                          });
-                    }
-                    else{
-                        reorder(places);
-                    }
-
-
-     
-                }
-                function reorder(places){
                     var placesDown = places;
                     var placesUp = places;
                     placesDown.sort(function(a, b){return b.download-a.download});
+                    // placesUp.sort(function(a, b){return b.upload-a.upload});
                     var rank = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth"];
-
-
-                    // hard code 10 slots
+                    // hard code 10 slots for Portland
                     var restrict = 10;
-                    for (i = 0; (i < restrict) & (i < places.length); i++) {
-                        var rankLow = rank[i].toLowerCase();
+                    for (i = 0; i < restrict; i++) {
+                            var rankLow = rank[i].toLowerCase();
                         if(placesDown[i].download > 5){
                             $( "#content" ).append( '<div id=' + rankLow + '><div class="player">' + rank[i] + '</div><div class="player">' + placesDown[i].download + '</div><div class="player"><a href="https://workfrom.co/' + placesDown[i].slug + '">' + placesDown[i].title + '</a></div></div>' );
                         }
+                        // if(placesDown[i].download > 5){
+                        //     $( "#content" ).append( '<a href="https://workfrom.co/' + placesDown[i].slug + '"><img src=' + placesDown[i].thumbnail_img + '></br><h2>' + placesDown[i].title + '</h2></a><p>Download speed: ' + placesDown[i].download + '</p><p>Upload speed: ' + placesDown[i].upload + '</p></br>' );   
+                        // }
 
                     }
+                    // $( ".toggle" ).click(function() {
+                    //     var citySelect = $(this).attr('id');
+                    //     console.log(citySelect);
+                    //     $( "#content" ).empty();
+                    //     for (i = 0; i < places.length; i++) { 
+                    //         if(placesUp[i].download > 5){
+                    //             $( "#content" ).append( '<a href="https://workfrom.co/' + placesUp[i].slug + '"><img src=' + placesUp[i].thumbnail_img + '></br><h2>' + placesUp[i].title + '</h2></a><p>Download speed: ' + placesUp[i].download + '</p><p>Upload speed: ' + placesUp[i].upload + '</p></br>' );   
+                    //         }
+
+                    //     }
+                    // });
+
+     
                 }
             }
+            getCity('portland');
 
         </script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

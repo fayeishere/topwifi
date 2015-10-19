@@ -86,7 +86,7 @@
                           geocoder.geocode({'location': latlng}, function(results, status) {
                             if (status === google.maps.GeocoderStatus.OK) {
                               if (results[3]) {
-                                console.log(results[3].address_components[1].long_name);
+                                // console.log(results[3].address_components[1].long_name);
                                 var city = results[3].address_components[1].long_name;
                                 var cityUrl = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
                                 $.getJSON( cityUrl, function( data ) {
