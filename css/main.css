@@ -85,6 +85,10 @@ h3{
 #tenth{
     color: #0cd424;
 }
+.cities{
+    text-decoration: underline;
+    padding: 2px;
+}
 @media (max-width : 480px) {
     .main{
         font-size: .5em;

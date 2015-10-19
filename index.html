@@ -39,6 +39,14 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
+                <div>
+                    <h2>Popular cities: </h2>
+                    <a href="#" class="cities">Portland</a>
+                    <a href="#" class="cities">NYC</a>
+                    <a href="#" class="cities">Seattle</a>
+                    <a href="#" class="cities">San-Francisco</a>
+                    <a href="#" class="cities">Chicago</a>
+                </div>
                 <h1 class="title">Top Wifi Spaces Near You</h1>
                 <h2 id="powered"> sourced from <a href="https://workfrom.co"></h2>
                 <img src="/img/WorkfromLogo.png"></a>
@@ -52,6 +60,7 @@
         <script type="text/javascript">
 
         getLocation();
+
             function getLocation() {
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(showPosition);
@@ -62,8 +71,11 @@
             function showPosition(position) {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
-                // testLat = 35.1992;
-                // testLong = -111.6311;
+                // latitude = 47.0425;
+                // longitude = -122.8931;
+                // // atlanta
+                // latitude = 33.7550;
+                // longitude = -84.3900;
 
 
                 getCity(latitude, longitude);
@@ -88,16 +100,7 @@
                               if (results[3]) {
                                 // console.log(results[3].address_components[1].long_name);
                                 var city = results[3].address_components[1].long_name;
-                                var cityUrl = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
-                                $.getJSON( cityUrl, function( data ) {
-                                    cityPlaces = data.response;
-                                    if(cityPlaces.length == 0){
-                                        window.alert('No results found');
-                                    }
-                                    else{
-                                        reorder(cityPlaces);
-                                    }
-                                });
+                                getCityAPI(city);
                               } else {
                                 window.alert('No results found');
                               }
@@ -112,6 +115,22 @@
 
 
      
+                }
+                $( ".cities" ).click(function(e) {
+                    $( "#content" ).empty();
+                    getCityAPI($(this).html());
+                });
+                function getCityAPI(city){
+                    var cityUrl = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
+                    $.getJSON( cityUrl, function( data ) {
+                        cityPlaces = data.response;
+                        if(cityPlaces.length == 0){
+                            window.alert('Sorry, no results found in ' + city);
+                        }
+                        else{
+                            reorder(cityPlaces);
+                        }
+                    });
                 }
                 function reorder(places){
                     var placesDown = places;
