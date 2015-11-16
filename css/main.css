@@ -27,7 +27,7 @@ a{
     text-align: center;
     margin: 0 auto;
 }
-.header-container img{
+#logo{
     width: 25%;
 }
 .title{
@@ -85,9 +85,43 @@ h3{
 #tenth{
     color: #0cd424;
 }
+#eleven{
+    color: #dcdcdc;
+}
+#twelve{
+    color: #fc0404;
+}
+#thirteen{
+    color: #fcb444;
+}
+#fourteen{
+    color: #fcb494;
+}
+#fifteen{
+    color: #f4cc34;
+}
+#sixteen{
+    color: #fcfc04;
+}
+#seventeen{
+    color: #14b42c;
+}
+#eighteen{
+    color: #04fcdc;
+}
+#nineteen{
+    color: #149cb4;
+}
+#twenty{
+    color: #0cd424;
+}
 .cities{
     text-decoration: underline;
     padding: 2px;
+}
+.social{
+    padding-top: 2%;
+    width: 10%;
 }
 @media (max-width : 480px) {
     .main{

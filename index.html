@@ -7,15 +7,28 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Top Wifi Spaces</title>
-        <meta name="description" content="The top wifi speeds in coffee shops, cafes, and coworking spaces in Portland.">
+        <meta name="description" content="The top wifi speeds in coffee shops, cafes, and coworking spaces near you.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Facebook and Google Plus--> 
+        <meta property="og:title" content="Top Wifi Spaces - Fastest wifi spots nearby"> 
+        <meta property="og:type" content="website"> 
+        <meta property="og:url" content="http://topwifi.space"> 
+        <meta property="og:image" content="http://topwifi.space/img/share.png"> 
+        <meta property="og:site_name" content="Top Wifi Space"> 
+        <meta property="og:description" content=“og:description" content=“Find the fastest wifi spots nearby in coffee shops, cafes, and bars."> 
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Top Wifi Spaces - Fastest wifi spots nearby" /> 
+        <meta name="twitter:description" content="Find the fastest wifi spots nearby in coffee shops, cafes, and bars." /> 
+        <meta name="twitter:image" content="http://topwifi.space/img/share.png" /> 
+        <meta name="twitter:url" content="http://topwifi.space" /> 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -47,9 +60,12 @@
                     <a href="#" class="cities">San-Francisco</a>
                     <a href="#" class="cities">Chicago</a>
                 </div>
+                <a target="_blank" class="popup" href="http://twitter.com/home?status=Top wifi spaces near you. http://topwifi.space/"><img class="social" src="img/twitter-icon.png"></a>
+
+<!--                 <img class="social" src="img/facebook-icon.png"> -->
                 <h1 class="title">Top Wifi Spaces Near You</h1>
                 <h2 id="powered"> sourced from <a href="https://workfrom.co"></h2>
-                <img src="/img/WorkfromLogo.png"></a>
+                <img id="logo" src="/img/WorkfromLogo.png"></a>
                 <p id="sub">Fastest wifi download speeds from work spaces including cafes, coffee shops, libraries, and co-working offices.</p>
             </header>
         </div>
@@ -85,6 +101,7 @@
 
                 var url = "http://api.workfrom.co/places/ll/" + latitude + "," + longitude + "?appid=fayerocks";
                 $.getJSON( url, function( data ) {
+                    // console.log(data.response[0].alcohol);
                     parseJson(data);
 
                 });

@@ -38,10 +38,10 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title">Top Cities To Work Remotely</h1>
+                <h1 class="title">Top Wifi Spaces in Portland</h1>
                 <h2 id="powered"> sourced from <a href="https://workfrom.co"></h2>
                 <img src="/img/WorkfromLogo.png"></a>
-                <p id="sub">Cities with the highest number of work spaces added to workfrom.</p>
+                <p id="sub">Fastest wifi download speeds from work spaces including cafes, coffee shops, libraries, and co-working offices.</p>
             </header>
         </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -49,49 +49,48 @@
 
         <script src="js/main.js"></script>
         <script type="text/javascript">
-            var cities = ["amsterdam", "austin", "chicago", "denver", "london", "los-angeles", "nyc", "omaha", "san-francisco", "portland", "washington-dc", "vancouver-bc", "madrid", "toronto", "berlin", "barcelona", "houston", "boston", "dallas", "philadelphia", "atlanta", "sydney", "seattle"];
-            var citiesObject = [];
+
             function getCity(city){
-                var url = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks&pending=0";
+                var url = "http://api.workfrom.co/places/city/" + city + "?appid=fayerocks";
                 $.getJSON( url, function( data ) {
-                    console.log(data);
-                  parseJson(data, city);
+                  parseJson(data);
                 });
-                function parseJson(data, city){
+                // Be cool to allow user to toggle upload/download
+                function parseJson(data){
                     var places = data.response;
-                    var number = places.length;
-                    citiesObject.push({
-                        city: city,
-                        number: number
-                    });
-                    if (citiesObject.length == cities.length) {
-                        appendResults();
-                    };
+                    var placesDown = places;
+                    var placesUp = places;
+                    placesDown.sort(function(a, b){return b.download-a.download});
+                    // placesUp.sort(function(a, b){return b.upload-a.upload});
+                    var rank = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth"];
+                    // hard code 10 slots for Portland
+                    var restrict = 10;
+                    for (i = 0; i < restrict; i++) {
+                            var rankLow = rank[i].toLowerCase();
+                        if(placesDown[i].download > 5){
+                            $( "#content" ).append( '<div id=' + rankLow + '><div class="player">' + rank[i] + '</div><div class="player">' + placesDown[i].download + '</div><div class="player"><a href="https://workfrom.co/' + placesDown[i].slug + '">' + placesDown[i].title + '</a></div></div>' );
+                        }
+                        // if(placesDown[i].download > 5){
+                        //     $( "#content" ).append( '<a href="https://workfrom.co/' + placesDown[i].slug + '"><img src=' + placesDown[i].thumbnail_img + '></br><h2>' + placesDown[i].title + '</h2></a><p>Download speed: ' + placesDown[i].download + '</p><p>Upload speed: ' + placesDown[i].upload + '</p></br>' );   
+                        // }
+
+                    }
+                    // $( ".toggle" ).click(function() {
+                    //     var citySelect = $(this).attr('id');
+                    //     console.log(citySelect);
+                    //     $( "#content" ).empty();
+                    //     for (i = 0; i < places.length; i++) { 
+                    //         if(placesUp[i].download > 5){
+                    //             $( "#content" ).append( '<a href="https://workfrom.co/' + placesUp[i].slug + '"><img src=' + placesUp[i].thumbnail_img + '></br><h2>' + placesUp[i].title + '</h2></a><p>Download speed: ' + placesUp[i].download + '</p><p>Upload speed: ' + placesUp[i].upload + '</p></br>' );   
+                    //         }
+
+                    //     }
+                    // });
 
      
                 }
-
             }
-            for(i = 0; i < cities.length; i++){
-                getCity(cities[i]);
-
-            }
-            var count = 0;
-            function appendResults(){
-                citiesObject.sort(function(a, b) {
-                    return parseFloat(b.number) - parseFloat(a.number);
-                });
-                console.log(citiesObject);
-                var rank = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty"];
-                var restrict = 20;
-                for (i = 0; i < restrict; i++) {
-                    var rankLow = rank[i].toLowerCase();
-                    $( "#content" ).append( '<div id=' + rankLow + '><div class="player">' + rank[i] + '</div><div class="player">' + citiesObject[i].city + '</div><div class="player">' + citiesObject[i].number + '</div></div>' );
-
-                }
-
-            }
-
+            getCity('portland');
 
         </script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
