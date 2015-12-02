@@ -119,7 +119,7 @@
                                 var city = results[3].address_components[1].long_name;
                                 getCityAPI(city);
                               } else {
-                                window.alert('No results found');
+                                window.alert('No results found in your area. Check out workfrom.co to add your favorite work spot to this list.');
                               }
                             } else {
                               window.alert('Geocoder failed due to: ' + status);
@@ -142,7 +142,7 @@
                     $.getJSON( cityUrl, function( data ) {
                         cityPlaces = data.response;
                         if(cityPlaces.length == 0){
-                            window.alert('Sorry, no results found in ' + city);
+                            window.alert('Sorry, no results found in ' + city + 'Check out workfrom.co to add your favorite work spot to this list.');
                         }
                         else{
                             reorder(cityPlaces);
