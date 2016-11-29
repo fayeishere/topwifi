@@ -123,6 +123,20 @@ h3{
     padding-top: 2%;
     width: 10%;
 }
+#search-form{
+    margin: 20px auto;
+    width: 40%;
+}
+#search-form input{
+    width: 80%;
+    height: 36px;
+}
+.btn{
+    background-color: #04fcdc;
+    padding: 12px;
+    margin-left: -4px;
+}
+
 @media (max-width : 480px) {
     .main{
         font-size: .5em;

@@ -21,7 +21,7 @@
     <meta name="twitter:url" content="http://topwifi.space" /> 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/app.css">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   </head>
@@ -33,7 +33,7 @@
 
         <div class="main-container">
             <div class="main wrapper clearfix">
-                <h3>Top Scores</h3>
+                <h3 id="title-city">Top Scores</h3>
                 <div id="winner-content">
                     <div class="column">Rank</div>
                     <div class="column">Score</div>
@@ -45,6 +45,10 @@
             </div> <!-- #main -->
         </div> <!-- #main-container -->
 
+        <div id="search-form">
+            <input type="text" placeholder="City">
+            <a id="location" href="#" class="btn">Search</a>
+        </div>
         <div class="header-container">
             <header class="wrapper clearfix">
                 <div>
