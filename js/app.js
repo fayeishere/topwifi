@@ -25,13 +25,14 @@ $(document).foundation()
                     var userLoc = $("#search-form input").val();
                     getCityAPI(userLoc);
                     $( "#title-city" ).text("Top Scores - " + userLoc).css('textTransform', 'capitalize');
-                    $('#submit-form input').val('');
                 }
 
             }
 
             $( ".cities" ).click(function(e) {
                 $( "#content" ).empty();
+                $('#search-form input').val($(this).html());
+                $( "#title-city" ).text("Top Scores - " + $(this).html());
                 getCityAPI($(this).html());
             });
             function getCityAPI(city){
